@@ -1,0 +1,76 @@
+;;; bdw/wps-time-tracking.el -*- lexical-binding: t; -*-
+
+;; TODO: Is global properties the right place for this?
+(setq org-global-properties
+      '(
+        ("wps_ALL".
+"Administration
+American-Cultures-Web
+APBears-Drupal
+ASG-Consulting
+bConnected-Consulting
+bConnected-Website
+BGC-Website
+CalNet-Website
+CATSIP-Website
+Chanc-Office-Website
+Chanc-RiskSvc-Website
+Chemistry-Website
+Dev-Tools
+Disability-Compl-Website
+Drupal-Community
+Drupal-Ops-Managed
+Drupal-PaaS-RFP
+DSP-Website
+EIS-Website
+Enterprise-SOA
+ERIT
+ETS-Website
+Gustafson-Website
+Haas-Consulting
+Holiday
+HR-Web
+IST-Staff-Drupal
+IT-Service-Catalog-Drupal
+Leave-Taken
+Library-Bindery
+LS-Web
+OCIO-Service-Catalog
+OCIO-Technology-Website
+OFEW-Website
+OFEW-FamilyEdge-Website
+Open-Berkeley
+Optometry-Website
+ORIAS-Website
+Pantheon-Admin
+PCSSC-Website
+PMB-Drupal
+Private-Pages-Features
+Procurement-Drupal
+Professional-Developmt
+Real-Estate-Website
+RetirementCtr-Website
+Research-Hub-Transition
+SafeTREC-Website
+Security-Website
+Service-Now-Website
+Software-Central-Website
+Staff-Org-Website-OB
+STC-Website
+STFC-Website
+StudentBilling-Web
+Telecom-Website
+Travel-Website
+UCPD-Website
+UCSF-PIVOT
+UHS-OptoHub-Features
+UHS-Policy-Website
+UPP-Website
+CV19-AdminLeavewithPay
+VCUE
+Web-Accessibility
+Web-Platform-Services
+Website-Abatement-Proj
+WPS-Console
+"
+                )))
