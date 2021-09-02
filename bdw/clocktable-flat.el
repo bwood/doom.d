@@ -75,21 +75,9 @@ Several other columns are calculated automatically:
 ;                            (insert "/"))))                       
                       ;((equal column "Item Desc") (insert (cadr row))) ;this is (car (cdr cons-cell)) or (nth 1 cons-cell)
                       ((equal column "Hours")
-                       ;;TODO let not setq?
-                       (setq hours (/ (nth 4 row) 60.0))
-                       (if (> hours 12)
-                           (error "Hours value exceeds max. Check your clocktables.")
-                         (insert (format "%0.2f" hours))))
-;                      ((equal column "Item Price")
- ;                      (insert (format "%s" price)))
-                      )
+                       (let ((hours (/ (nth 4 row) 60.0)))
+                          (if (> hours 12)
+                           (error "Hours value exceeds max. Check the last line written and corret that entry.")
+                         (insert (format "%0.2f" hours))))))
                      (insert ",")) ;should skip the comma at the end of the line
                    (insert "\n"))))))))))
-;    (insert "#+TBLFM: " (plist-get params :formula))
-;    (org-ctrl-c-ctrl-c)
-;    (goto-char ipos)
-;    (skip-chars-forward "^|")))
-;
-; The cons function is used to construct lists, and the car and cdr functions are used to take them apart.
-; The car of a list is, quite simply, the first item in the list. Thus the car of the list (rose violet daisy buttercup) is rose.
-; The cdr of a list is the rest of the list, that is, the cdr function returns the part of the list that follows the first item. Thus, while the car of the list '(rose violet daisy buttercup) is rose, the rest of the list, the value returned by the cdr function, is (violet daisy buttercup).
