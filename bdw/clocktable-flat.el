@@ -63,7 +63,7 @@ Several other columns are calculated automatically:
 			(if properties
 			    (concat
 			     (mapconcat
-			      (lambda (p) (or (cdr (assoc p (nth 4 row))) ""))
+			      (lambda (p) (or (cdr (assoc p (nth 5 row))) ""))
 		              properties "") "") "")))  ;properties columns, maybe
                       ((equal column "Notes") 
 		       (insert "\"" (nth 1 row) "\""))
@@ -75,10 +75,14 @@ Several other columns are calculated automatically:
 ;                            (insert "/"))))                       
                       ;((equal column "Item Desc") (insert (cadr row))) ;this is (car (cdr cons-cell)) or (nth 1 cons-cell)
                       ((equal column "Hours")
-                       (insert (format "%0.2f" (/ (nth 3 row) 60.0))))
+                       ;;TODO let not setq?
+                       (setq hours (/ (nth 4 row) 60.0))
+                       (if (> hours 12)
+                           (error "Hours value exceeds max. Check your clocktables.")
+                         (insert (format "%0.2f" hours))))
 ;                      ((equal column "Item Price")
  ;                      (insert (format "%s" price)))
-)
+                      )
                      (insert ",")) ;should skip the comma at the end of the line
                    (insert "\n"))))))))))
 ;    (insert "#+TBLFM: " (plist-get params :formula))
