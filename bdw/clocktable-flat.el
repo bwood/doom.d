@@ -77,7 +77,7 @@ Several other columns are calculated automatically:
                       ((equal column "Hours")
                        (let ((hours (/ (nth 4 row) 60.0)))
                           (if (> hours 12)
-                           (error "Hours value exceeds max. Check the last line written and corret that entry.")
+                           (error "Hours value exceeds max. Check the last line written and correct that entry.")
                          (insert (format "%0.2f" hours))))))
                      (insert ",")) ;should skip the comma at the end of the line
                    (insert "\n"))))))))))
