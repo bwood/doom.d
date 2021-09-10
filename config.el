@@ -26,6 +26,9 @@
 ;; `load-theme' function. This is the default:
 (setq doom-theme 'doom-one-light)
 
+;;;; Global keybindings
+;; Remapping "C-x o" to next-window-any-frame allows me to switch to non-file buffers like *scratch* and *vterm*
+(map! "C-x o" #'next-window-any-frame)
 ;;;;;;;;;;;;;;;;;
 ;;;; Orgmode ;;;;
 ;;;;;;;;;;;;;;;;;
