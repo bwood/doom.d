@@ -41,11 +41,18 @@
       :desc "Org capture"
       "c" #'org-capture)
 
+;; Fold Org files by default
+(after! org (setq org-startup-folded t))
+
+;; Hide Org markup indicators.
+(after! org (setq org-hide-emphasis-markers t))
+
 ;;;; Agenda
 (after! org
   (setq org-agenda-files (append (file-expand-wildcards "~/Documents/orgmode2/*.org")))
   (setq org-todo-keywords
-       '((sequence "TODO(t)" "INPROG(i)" "TESTING(s)" "WAITING(w)" "BLOCKED(b)" "|" "DONE(d)" "WONTFIX(x)" ))))
+        '((sequence "TODO(t)" "INPROG(i)" "TESTING(s)" "WAITING(w)" "BLOCKED(b)" "|" "DONE(d)" "WONTFIX(x)" ))))
+
 
 
 ;;;; Clocktable
