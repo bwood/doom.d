@@ -42,7 +42,12 @@
       "c" #'org-capture)
 
 ;;;; Agenda
-(after! org (setq org-agenda-files (append (file-expand-wildcards "~/Documents/orgmode2/*.org"))))
+(after! org
+  (setq org-agenda-files (append (file-expand-wildcards "~/Documents/orgmode2/*.org")))
+  (setq org-todo-keywords
+       '((sequence "TODO(t)" "INPROG(i)" "TESTING(s)" "WAITING(w)" "BLOCKED(b)" "|" "DONE(d)" "WONTFIX(x)" ))))
+
+
 ;;;; Clocktable
 (load! "bdw/clocktable-flat.el")
 

@@ -52,3 +52,9 @@
 ;; https://github.com/stig/ox-jira.el
 ;; Provides export to jira functionality
 (package! ox-jira)
+
+;; My fork of org-mode to provide clocktable-flat functionality
+(package! org-mode
+   :recipe (:local-repo "/Users/bwood/code/lisp/org-mode"))
+;; (package! org-mode
+;;   :recipe (:host github :repo "bwood/org-mode" :branch "org-clock_step-header-off"))
