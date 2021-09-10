@@ -31,6 +31,26 @@
 ;;;;;;;;;;;;;;;;;
 (setq org-directory "~/Documents/orgmode2")
 
+;; Fold Org files by default
+(after! org (setq org-startup-folded t))
+
+;; Hide Org markup indicators.
+(after! org (setq org-hide-emphasis-markers t))
+
+;;;; Agenda
+;; Presentation
+(after! org
+  ;; Agenda 50% height
+  (setq org-agenda-window-frame-fractions'(0.5 0.5))
+   ;; Agenda follow mode
+  (setq org-agenda-start-with-follow-mode t))
+
+;; TODO keywords
+(after! org
+  (setq org-agenda-files (append (file-expand-wildcards "~/Documents/orgmode2/*.org")))
+  (setq org-todo-keywords
+        '((sequence "TODO(t)" "INPROG(i)" "TESTING(s)" "WAITING(w)" "BLOCKED(b)" "|" "DONE(d)" "WONTFIX(x)" ))))
+
 ;; Capture templates
 (setq org-capture-templates
        `(("i" "Inbox" entry  (file "inbox.org")
@@ -40,18 +60,6 @@
 (map! :leader
       :desc "Org capture"
       "c" #'org-capture)
-
-;; Fold Org files by default
-(after! org (setq org-startup-folded t))
-
-;; Hide Org markup indicators.
-(after! org (setq org-hide-emphasis-markers t))
-
-;;;; Agenda
-(after! org
-  (setq org-agenda-files (append (file-expand-wildcards "~/Documents/orgmode2/*.org")))
-  (setq org-todo-keywords
-        '((sequence "TODO(t)" "INPROG(i)" "TESTING(s)" "WAITING(w)" "BLOCKED(b)" "|" "DONE(d)" "WONTFIX(x)" ))))
 
 
 
