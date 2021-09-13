@@ -27,6 +27,7 @@
 (setq doom-theme 'doom-one-light)
 
 ;;;; Global keybindings
+
 ;; Remapping "C-x o" to next-window-any-frame allows me to switch to non-file buffers like *scratch* and *vterm*
 (map! "C-x o" #'next-window-any-frame)
 ;;;;;;;;;;;;;;;;;
@@ -50,13 +51,17 @@
 
 ;; TODO keywords
 (after! org
-  (setq org-agenda-files (append (file-expand-wildcards "~/Documents/orgmode2/*.org")))
+  (setq org-agenda-files '("~/Documents/orgmode2/agenda"))
   (setq org-todo-keywords
-        '((sequence "TODO(t)" "INPROG(i)" "TESTING(s)" "WAITING(w)" "BLOCKED(b)" "|" "DONE(d)" "WONTFIX(x)" ))))
+        '((sequence "TODO(t)" "INPROG(i)" "TESTING(s)" "WAITING(w)" "BLOCKED(b)" "|" "DONE(d)" "WONTFIX(x)" )))
+  ;; With this set to t emacs was hanging when I clocked in.
+  ;; Could be that wps.org has some properties in it that are
+  ;; confusing org-mode. https://orgmode.org/manual/TODO-dependencies.html
+  (setq org-agenda-dim-blocked-tasks nil))
 
 ;; Capture templates
 (setq org-capture-templates
-       `(("i" "Inbox" entry  (file "inbox.org")
+       '(("i" "Inbox" entry  (file "inbox.org")
         ,(concat "* TODO %?\n"
                  "/Entered on/ %U"))))
 
