@@ -30,6 +30,9 @@
 
 ;; Remapping "C-x o" to next-window-any-frame allows me to switch to non-file buffers like *scratch* and *vterm*
 (map! "C-x o" #'next-window-any-frame)
+;; Navigate between multiple windows
+(setq ace-window-display-mode t)
+(map! "C-x w" #'ace-window)
 ;;;;;;;;;;;;;;;;;
 ;;;; Orgmode ;;;;
 ;;;;;;;;;;;;;;;;;
@@ -57,7 +60,9 @@
   ;; With this set to t emacs was hanging when I clocked in.
   ;; Could be that wps.org has some properties in it that are
   ;; confusing org-mode. https://orgmode.org/manual/TODO-dependencies.html
-  (setq org-agenda-dim-blocked-tasks nil))
+  (setq org-agenda-dim-blocked-tasks nil)
+  ;; Make clocktables sum time using only hours, not days.
+  (setq org-duration-format (quote h:mm)))
 
 ;; Capture templates
 (setq org-capture-templates
