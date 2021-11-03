@@ -66,9 +66,11 @@
 
 ;; Capture templates
 (setq org-capture-templates
-       '(("i" "Inbox" entry  (file "inbox.org")
-        ,(concat "* TODO %?\n"
-                 "/Entered on/ %U"))))
+       '(("t" "TODO" entry  (file "inbox.org")
+          (concat "* TODO %?\n"
+                 "/Entered on/ %U"))
+         ("i" "Interruption" entry  (file "inbox.org")
+           "* Interruption %?\n" :clock-in t :clock-resume t :tree-type month)))
 
 (map! :leader
       :desc "Org capture"
