@@ -4,7 +4,8 @@
 (setq org-global-properties
       '(
         ("wps_ALL".
-"Administration
+"2.0-Project
+Administration
 American-Cultures-Web
 APBears-Drupal
 ASG-Consulting
@@ -59,6 +60,7 @@ Staff-Org-Website-OB
 STC-Website
 STFC-Website
 StudentBilling-Web
+System-Administration
 Telecom-Website
 Travel-Website
 UCPD-Website
