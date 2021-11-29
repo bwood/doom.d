@@ -33,6 +33,7 @@ Holiday
 HR-Web
 IST-Staff-Drupal
 IT-Service-Catalog-Drupal
+JSP-Legal-Studies-Web
 Leave-Taken
 Library-Bindery
 LS-Web
