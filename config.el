@@ -38,11 +38,14 @@
 ;;;;;;;;;;;;;;;;;
 (setq org-directory "~/Documents/orgmode2")
 
-;; Fold Org files by default
-(after! org (setq org-startup-folded t))
 
-;; Hide Org markup indicators.
-(after! org (setq org-hide-emphasis-markers t))
+(after! org
+  ;; Fold Org files by default
+  (setq org-startup-folded t)
+  ;; Hide Org markup indicators.
+  (setq org-hide-emphasis-markers t)
+  ;; Indent drawers like LOGBOOK
+  (setq org-adapt-indentation t))
 
 ;;;; Agenda
 ;; Presentation
@@ -62,15 +65,14 @@
   ;; confusing org-mode. https://orgmode.org/manual/TODO-dependencies.html
   (setq org-agenda-dim-blocked-tasks nil)
   ;; Make clocktables sum time using only hours, not days.
-  (setq org-duration-format (quote h:mm)))
-
-;; Capture templates
-(setq org-capture-templates
-       '(("t" "TODO" entry  (file "inbox.org")
-          (concat "* TODO %?\n"
-                 "/Entered on/ %U"))
-         ("i" "Interruption" entry  (file "inbox.org")
-           "* Interruption %?\n" :clock-in t :clock-resume t :tree-type month)))
+  (setq org-duration-format (quote h:mm))
+  ;; Capture templates
+  (setq org-capture-templates
+        '(("t" "TODO" entry  (file "inbox.org")
+           (concat "* TODO %?\n"
+                   "/Entered on/ %U"))
+          ("i" "Interruption" entry  (file "inbox.org")
+           "* Interruption %?\n" :clock-in t :clock-resume t :tree-type month))))
 
 (map! :leader
       :desc "Org capture"
