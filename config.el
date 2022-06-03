@@ -91,7 +91,9 @@
 ;; Make option keys act as meta.
 ;; https://github.com/hlissner/doom-emacs/issues/3952#issuecomment-718393737
 (cond (IS-MAC
-       (setq mac-option-modifier       'meta
+       ;mac-function-modifier is Fn key on *laptop* keyboard.
+       (setq mac-function-modifier 'meta
+             mac-option-modifier       'meta
              mac-right-option-modifier 'meta)))
 
 ;; Here are some additional functions/macros that could help you configure Doom:
@@ -129,9 +131,9 @@
 ;  :bind (("C-c d" . deft)
 ;         ("C-c D" . deft-new-file-named))
   :commands (deft)
-  :config (setq deft-directory "/Volumes/GoogleDrive/My Drive/Documents/orgmode/deft"
+  :config (setq deft-directory "~/Documents/orgmode2/deft"
                 deft-extensions '("org" "md")
                 deft-default-extension "org"))
 
 ;; load personal modules
-;; (load! "+ejira")
+;; (load! "+ejira") ;; I guess I was adding ejira config to this personal module?
