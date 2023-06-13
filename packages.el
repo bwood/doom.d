@@ -54,12 +54,12 @@
 (package! ox-jira)
 
 ;; My fork of org-mode to provide clocktable-flat functionality
-;;(package! org-mode
-;;   :recipe (:local-repo "/Users/bwood/code/lisp/org-mode")) ;;local repo not loading
+;; We can't just use :recpie(:local-repo) because Doom needs to do some post-install compilation for
+;; org-mode.  See: https://github.com/doomemacs/doomemacs/blob/develop/modules/lang/org/packages.el#L17-L29
 (package! org-mode
   :recipe (:host github
            :repo "bwood/org-mode"
-           :branch "9.6"
+           :branch "9.6-bed47b437"
            :build t
            :pre-build
            (with-temp-file "org-version.el"
