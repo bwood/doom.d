@@ -36,7 +36,10 @@
 ;;;;;;;;;;;;;;;;;
 ;;;; Orgmode ;;;;
 ;;;;;;;;;;;;;;;;;
-(setq org-directory "~/Documents/orgmode2")
+
+;; ~/Documents/orgmode is a link to my (available offline) orgmode directory on Google Drive.
+;; Making this a link helps to standardize my setup on multiple machines.
+(setq org-directory "~/Documents/orgmode")
 
 
 (after! org
@@ -57,7 +60,7 @@
 
 ;; TODO keywords
 (after! org
-  (setq org-agenda-files '("~/Documents/orgmode2/agenda"))
+  (setq org-agenda-files '("~/Documents/orgmode/agenda"))
   (setq org-todo-keywords
         '((sequence "TODO(t)" "INPROG(i)" "TESTING(s)" "WAITING(w)" "BLOCKED(b)" "|" "DONE(d)" "WONTFIX(x)" )))
   ;; With this set to t emacs was hanging when I clocked in.
@@ -131,7 +134,7 @@
 ;  :bind (("C-c d" . deft)
 ;         ("C-c D" . deft-new-file-named))
   :commands (deft)
-  :config (setq deft-directory "~/Documents/orgmode2/deft"
+  :config (setq deft-directory "~/Documents/orgmode/deft"
                 deft-extensions '("org" "md")
                 deft-default-extension "org"))
 
