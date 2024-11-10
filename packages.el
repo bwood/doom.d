@@ -1,4 +1,3 @@
-;; -*- no-byte-compile: t; -*-
 ;;; $DOOMDIR/packages.el
 
 ;; To install a package with Doom you must declare them here and run 'doom sync'
@@ -56,26 +55,27 @@
 ;; My fork of org-mode to provide clocktable-flat functionality
 ;; We can't just use :recpie(:local-repo) because Doom needs to do some post-install compilation for
 ;; org-mode.  See: https://github.com/doomemacs/doomemacs/blob/develop/modules/lang/org/packages.el#L17-L29
-(package! org-mode
-  :recipe (:host github
-           :repo "bwood/org-mode"
-           :branch "9.6-bed47b437"
-           :build t
-           :pre-build
-           (with-temp-file "org-version.el"
-             (let ((version
-                    (with-temp-buffer
-                      (insert-file-contents (doom-path "lisp/org.el") nil 0 1024)
-                      (if (re-search-forward "^;; Version: \\([^\n-]+\\)" nil t)
-                          (match-string-no-properties 1)
-                        "Unknown"))))
-               (insert (format "(defun org-release () %S)\n" version)
-                       (format "(defun org-git-version (&rest _) \"%s-??-%s\")\n"
-                               version (cdr (doom-call-process "git" "rev-parse" "--short" "HEAD")))
-                       "(provide 'org-version)\n")))))
+;; (package! org-mode
+;;   :recipe (:host github
+;;            :repo "bwood/org-mode"
+;;            :branch "9.6-bed47b437"
+;;            :build t
+;;            :pre-build
+;;            (with-temp-file "org-version.el"
+;;              (let ((version
+;;                     (with-temp-buffer
+;;                       (insert-file-contents (doom-path "lisp/org.el") nil 0 1024)
+;;                       (if (re-search-forward "^;; Version: \\([^\n-]+\\)" nil t)
+;;                           (match-string-no-properties 1)
+;;                         "Unknown"))))
+;;                (insert (format "(defun org-release () %S)\n" version)
+;;                        (format "(defun org-git-version (&rest _) \"%s-??-%s\")\n"
+;;                                version (cdr (doom-call-process "git" "rev-parse" "--short" "HEAD")))
+;;                        "(provide 'org-version)\n")))))
 
 
 ;; Fix magit
 ;; https://github.com/doomemacs/doomemacs/issues/5435
 ;;(package! magit-section)
 ;;(package! magit-base)
+
