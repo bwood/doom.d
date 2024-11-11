@@ -84,7 +84,7 @@
 
 
 ;;;; Clocktable
-(load! "bdw/clocktable-flat.el")
+;;(load! "bdw/clocktable-flat.el")
 
 ;;
 ;; This determines the style of line numbers in effect. If set to `nil', line
@@ -140,3 +140,8 @@
 
 ;; load personal modules
 ;; (load! "+ejira") ;; I guess I was adding ejira config to this personal module?
+
+;; OpenSCAD
+(after! scad-mode
+  (setq scad-indent-level 2)
+  (setq scad-command "/Applications/OpenSCAD.app/Contents/MacOS/OpenSCAD"))

@@ -79,3 +79,5 @@
 ;;(package! magit-section)
 ;;(package! magit-base)
 
+;; OpenSCAD
+(package! scad-mode)
