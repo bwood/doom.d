@@ -142,6 +142,11 @@
 ;; (load! "+ejira") ;; I guess I was adding ejira config to this personal module?
 
 ;; OpenSCAD
-(after! scad-mode
-  (setq scad-indent-level 2)
-  (setq scad-command "/Applications/OpenSCAD.app/Contents/MacOS/OpenSCAD"))
+(use-package scad-mode :defer t
+  ;;(setq scad-indent-level 2)
+  :custom
+  (scad-command "/Applications/OpenSCAD\ 2024.11.10.app/Contents/MacOS/OpenSCAD")
+  :init
+  (with-eval-after-load 'eglot
+    (add-to-list 'eglot-server-programs
+                 '(scad-mode . ("openscad-lsp" "--stdio")))))
