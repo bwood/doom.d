@@ -141,11 +141,25 @@
 ;; load personal modules
 ;; (load! "+ejira") ;; I guess I was adding ejira config to this personal module?
 
+;; imenu. Function navigation.
+;; https://github.com/doomemacs/doomemacs/issues/1402#issuecomment-491463623
+;; Make the imenu list show as a left side bar.
+(after! imenu-list
+  (set-popup-rule! "^\\*Ilist"
+    :side 'left :size 20 :quit nil :select nil :ttl 0))
+
 ;; OpenSCAD
-(use-package scad-mode :defer t
-  ;;(setq scad-indent-level 2)
+(use-package scad-mode
+  :defer t
   :custom
-  (scad-command "/Applications/OpenSCAD\ 2024.11.10.app/Contents/MacOS/OpenSCAD")
+  (scad-command "/Applications/OpenSCAD 2024.11.10.app/Contents/MacOS/OpenSCAD")
+  (scad-indent-level 2)
+  :hook
+  ((scad-mode . imenu-add-menubar-index)
+      (scad-mode . (lambda ()
+                  (setq imenu-generic-expression
+                        '(("Modules" "module[ \t]+\\([A-Za-z0-9_]+\\)" 1)
+                          ("Functions" "function[ \t]+\\([A-Za-z0-9_]+\\)" 1))))))
   :init
   (with-eval-after-load 'eglot
     (add-to-list 'eglot-server-programs

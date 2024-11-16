@@ -81,3 +81,8 @@
 
 ;; OpenSCAD
 (package! scad-mode)
+
+;; imenu-list. A sidebar for function navigation.
+(package! imenu-list)
+;; imenu-anywhere an extension to search across multiple buffers.
+(package! imenu-anywhere)
