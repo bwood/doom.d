@@ -19,20 +19,20 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-(setq doom-font (font-spec :family "monospace" :size 14))
+;;(setq doom-font (font-spec :family "monospace" :size 14))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-one-light)
+;;(setq doom-theme 'doom-one-light)
 
 ;;;; Global keybindings
 
 ;; Remapping "C-x o" to next-window-any-frame allows me to switch to non-file buffers like *scratch* and *vterm*
-(map! "C-x o" #'next-window-any-frame)
+;;(map! "C-x o" #'next-window-any-frame)
 ;; Navigate between multiple windows
-(setq ace-window-display-mode t)
-(map! "C-x w" #'ace-window)
+;; (setq ace-window-display-mode t)
+;; (map! "C-x w" #'ace-window)
 ;;;;;;;;;;;;;;;;;
 ;;;; Orgmode ;;;;
 ;;;;;;;;;;;;;;;;;
@@ -117,11 +117,11 @@
 ;; they are implemented.
 
 ;; Time tracking codes for WPS
-(load! "bdw/wps-time-tracking.el")
+;; (load! "bdw/wps-time-tracking.el")
 
 ;; Projectile
 ;;
-(setq projectile-project-search-path '("~/code/" "~/Sites" "~/.doom.d"))
+;; (setq projectile-project-search-path '("~/code/" "~/Sites" "~/.doom.d"))
 
 ;; Exporters
 (use-package! ox-jira
@@ -144,23 +144,32 @@
 ;; imenu. Function navigation.
 ;; https://github.com/doomemacs/doomemacs/issues/1402#issuecomment-491463623
 ;; Make the imenu list show as a left side bar.
-(after! imenu-list
-  (set-popup-rule! "^\\*Ilist"
-    :side 'left :size 20 :quit nil :select nil :ttl 0))
+;; (after! imenu-list
+;;   (set-popup-rule! "^\\*Ilist"
+;;     :side 'left :size 20 :quit nil :select nil :ttl 0))
 
-;; OpenSCAD
-(use-package scad-mode
-  :defer t
-  :custom
-  (scad-command "/Applications/OpenSCAD 2024.11.10.app/Contents/MacOS/OpenSCAD")
-  (scad-indent-level 2)
-  :hook
-  ((scad-mode . imenu-add-menubar-index)
-      (scad-mode . (lambda ()
-                  (setq imenu-generic-expression
-                        '(("Modules" "module[ \t]+\\([A-Za-z0-9_]+\\)" 1)
-                          ("Functions" "function[ \t]+\\([A-Za-z0-9_]+\\)" 1))))))
-  :init
-  (with-eval-after-load 'eglot
-    (add-to-list 'eglot-server-programs
-                 '(scad-mode . ("openscad-lsp" "--stdio")))))
+;; ;; OpenSCAD
+;; (use-package scad-mode
+;;   :defer t
+;;   :custom
+;;   (scad-command "/Applications/OpenSCAD 2024.11.10.app/Contents/MacOS/OpenSCAD")
+;;   (scad-indent-level 2)
+;;   :hook
+;;   ((scad-mode . imenu-add-menubar-index)
+;;       (scad-mode . (lambda ()
+;;                   (setq imenu-generic-expression
+;;                         '(("Modules" "module[ \t]+\\([A-Za-z0-9_]+\\)" 1)
+;;                           ("Functions" "function[ \t]+\\([A-Za-z0-9_]+\\)" 1))))))
+;;   :init
+;;   (with-eval-after-load 'eglot
+;;     (add-to-list 'eglot-server-programs
+;;                  '(scad-mode . ("openscad-lsp" "--stdio")))))
+
+
+;; YA-Snippet
+;; Quiet: Messages: [yas] Check your `yas-snippet-dirs': /Users/bwood/.doom.d/snippets/ is not a directory
+;; (make-directory "~/.doom.d/snippets" t)
+
+;; Use Doom’s persistent logging feature to retain *Messages* output between sessions
+(setq doom-debug-p t)
+(setq doom-verbose t)
