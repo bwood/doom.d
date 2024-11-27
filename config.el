@@ -83,10 +83,6 @@
 
 
 
-;;;; Clocktable
-;;(load! "bdw/clocktable-flat.el")
-
-;;
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type t)
@@ -115,9 +111,6 @@
 ;;
 ;; You can also try 'gd' (or 'C-c g d') to jump to their definition and see how
 ;; they are implemented.
-
-;; Time tracking codes for WPS
-;; (load! "bdw/wps-time-tracking.el")
 
 ;; Projectile
 ;;
