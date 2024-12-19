@@ -166,3 +166,7 @@
 ;; Use Doom’s persistent logging feature to retain *Messages* output between sessions
 (setq doom-debug-p t)
 (setq doom-verbose t)
+
+;; Load custom clocktable formatter only when Org mode is loaded
+(with-eval-after-load 'org
+  (load (expand-file-name "bdw/clocktable-csv-formatter.el" "~/.doom.d/")))
