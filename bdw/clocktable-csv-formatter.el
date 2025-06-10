@@ -33,9 +33,9 @@ If a title contains a ticket ID like ABC-123:, splits it into two CSV fields."
                (if (string-match "\\([A-Za-z]+-[0-9]+\\):\\s-*\\(.*\\)" cleaned-title)
                    (let ((ticket (match-string 1 cleaned-title))
                          (desc (match-string 2 cleaned-title)))
-                     (format "\"%s\",\"%s\",\"%s\",%.2f" friday-date ticket desc hours))
+                     (format "\"%s\",\"%s\",%.2f,\"%s\"" friday-date ticket hours desc))
                  ;; Else just one title field
-                 (format "\"%s\",\"%s\",%.2f" friday-date cleaned-title hours))))
+                 (format "\"%s\",%.2f\",\"%s\"" friday-date  hours cleaned-title))))
            level-2-entries)))
     (goto-char ipos)
     (insert (concat (string-join csv-lines "\n") "\n"))))
