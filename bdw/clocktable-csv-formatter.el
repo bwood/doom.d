@@ -10,12 +10,14 @@ Also writes the CSV to /tmp/[friday-date].csv with slashes replaced by dashes."
                  (string-match "\\([0-9]+\\)-W\\([0-9]+\\)" block-spec)
                  (string-to-number (match-string 1 block-spec))))
          (week (string-to-number (match-string 2 block-spec)))
-         (time (encode-time 0 0 0 5 1 year t nil))
-         (friday-date-raw (time-add time (days-to-time (* (1- week) 7))))
-         (friday-date (format-time-string "%m\\%d\\%Y" friday-date-raw))
-         (friday-date-filename (replace-regexp-in-string "/" "-"
-                                      (format-time-string "%m-%d-%Y" friday-date-raw)))
 
+         ;; Manual Friday calculation based on ISO week
+         (jan4 (encode-time 0 0 0 4 1 year)) ;; Jan 4th, always in ISO week 1
+         (dow (string-to-number (format-time-string "%u" jan4))) ;; 1=Monday, 7=Sunday
+         (monday-week-1 (time-subtract jan4 (days-to-time (1- dow))))
+         (friday (time-add monday-week-1 (days-to-time (+ (* (1- week) 7) 4))))
+         (friday-date (format-time-string "%m/%d/%Y" friday))
+         (friday-date-filename (replace-regexp-in-string "/" "-" friday-date))
          (csv-path (concat "/tmp/" friday-date-filename ".csv"))
 
          ;; Level 2 entries only (sub-entries)
