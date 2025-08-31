@@ -175,3 +175,49 @@
 ;; Load custom clocktable formatter only when Org mode is loaded
 (with-eval-after-load 'org
   (load (expand-file-name "bdw/clocktable-csv-formatter.el" "~/.doom.d/")))
+
+;;;; PHP Development Configuration ;;;;
+
+;; PHP LSP configuration
+(after! php-mode
+  ;; Use intelephense as the PHP language server
+  (setq lsp-php-server-command '("intelephense" "--stdio"))
+  
+  ;; PHP formatting
+  (setq-hook! 'php-mode-hook
+    ;; Indentation
+    tab-width 2
+    c-basic-offset 2)
+  
+  ;; Enable LSP only for PHP files
+  (add-hook 'php-mode-hook #'lsp!)
+  
+  ;; Enable DAP mode for PHP files
+  (add-hook 'php-mode-hook (lambda ()
+                             (require 'dap-mode)
+                             (require 'dap-php)
+                             (dap-mode 1))))
+
+;; DAP (Debug Adapter Protocol) configuration for PHP/xdebug
+(with-eval-after-load 'dap-mode
+  ;; Load PHP debugging support
+  (require 'dap-php)
+  
+  ;; Configure xdebug for Docker
+  (dap-register-debug-template
+   "PHP Docker Debug"
+   (list :type "php"
+         :request "launch"
+         :name "PHP Docker Debug"
+         :port 9003
+         :pathMappings (ht ("/opt/WpsConsole" "~/code/php/WpsConsole"))
+         :log t))
+  
+  ;; Default debug template
+  (dap-register-debug-template
+   "PHP Debug"
+   (list :type "php"
+         :request "launch"
+         :name "PHP Debug"
+         :port 9003
+         :log t)))
