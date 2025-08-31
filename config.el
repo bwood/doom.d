@@ -19,12 +19,16 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-;;(setq doom-font (font-spec :family "monospace" :size 14))
+;; Font configuration - GUI only
+;;(when (display-graphic-p)
+;;  (setq doom-font (font-spec :family "monospace" :size 14)))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-;;(setq doom-theme 'doom-one-light)
+;; Theme configuration - GUI only
+;;(when (display-graphic-p)
+;;  (setq doom-theme 'doom-one-light))
 
 ;;;; Global keybindings
 
@@ -141,22 +145,23 @@
   (set-popup-rule! "^\\*Ilist"
     :side 'left :size 20 :quit nil :select nil :ttl 0))
 
-;; ;; OpenSCAD
-(use-package scad-mode
-  :defer t
-  :custom
-  (scad-command "/Applications/OpenSCAD 2024.11.10.app/Contents/MacOS/OpenSCAD")
-  (scad-indent-level 2)
-  :hook
-  ((scad-mode . imenu-add-menubar-index)
-      (scad-mode . (lambda ()
-                  (setq imenu-generic-expression
-                        '(("Modules" "module[ \t]+\\([A-Za-z0-9_]+\\)" 1)
-                          ("Functions" "function[ \t]+\\([A-Za-z0-9_]+\\)" 1))))))
-  :init
-  (with-eval-after-load 'eglot
-    (add-to-list 'eglot-server-programs
-                 '(scad-mode . ("openscad-lsp" "--stdio")))))
+;; OpenSCAD - macOS only
+(when IS-MAC
+  (use-package scad-mode
+    :defer t
+    :custom
+    (scad-command "/Applications/OpenSCAD 2024.11.10.app/Contents/MacOS/OpenSCAD")
+    (scad-indent-level 2)
+    :hook
+    ((scad-mode . imenu-add-menubar-index)
+        (scad-mode . (lambda ()
+                    (setq imenu-generic-expression
+                          '(("Modules" "module[ \t]+\\([A-Za-z0-9_]+\\)" 1)
+                            ("Functions" "function[ \t]+\\([A-Za-z0-9_]+\\)" 1))))))
+    :init
+    (with-eval-after-load 'eglot
+      (add-to-list 'eglot-server-programs
+                   '(scad-mode . ("openscad-lsp" "--stdio"))))))
 
 
 ;; YA-Snippet
